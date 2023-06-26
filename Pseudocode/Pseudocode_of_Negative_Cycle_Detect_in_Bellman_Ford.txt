@@ -1,0 +1,36 @@
+// Pseudocode: Bellman Ford
+
+Input -> A weighted graph & a src node (with no negative cycles)
+Output-> Shortest distance from src node to all other nodes
+
+n - # of nodes
+m - # of edges
+
+
+time complexity -> O(n^3)
+space complexity -> O(n)
+/*
+d[u] + c(u,v) < d[v]
+=> d[v] = d[v] + c(u,v)
+*/
+
+- create a distance array "d" with all values to infinity -> O(n)
+- d[src] = 0 -> O(1)
+
+- negative_cycle = false
+- for i = 1 to n-1: -> O(n)
+	- for all edge e(u,v,w): -> O(m) => O(n *  m)
+		- if d[u] + w < d[v] -> O(1)
+			- d[v] = d[u] + w -> O(1)
+			- if i == n
+			 	- negative_cylce = true
+
+- print whether negative cycle exists
+-print the distance array "d" -> O(n) 
+
+
+
+O(n) + O(1) + O(n*m) + O(n)
+=> O(n * m)
+=> O(|V| + |E|)  (m = n^2)
+=> O(n^3)
